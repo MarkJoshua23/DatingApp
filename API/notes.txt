@@ -1,0 +1,25 @@
+>program cs have 2 areas, the service area and middlewares
+>int are primitive type means the default value is 0
+>when a new instance of this class is made, constructor is executed automatically
+>nullable enable means vscode will warn u if the item can become null so u can make null exceptions
+
+===SHORTCUTS=====
+>ctrl p => search file
+>ctrl . => lightbulb/quickfix
+
+
+
+==ENTITY==
+>Query
+>Track changes happening
+>Saving
+>Concurrency
+>Transactions => different actions happening that if one fails then all actions are not saved
+>Caching
+>Builtin conventions( 'Id' are automatically PK)
+>Migrations
+>microsoft.entityframeworkcore.sqlite ==> choose the net version
+>microsoft.entityframeworkcore.design ==> for migration
+>dotnet-ef for migration=> u need to install the tool globlly
+>dotnet ef migrations add InitialCreate -o Data/Migrations => this just creates a migration not a db
+>dotnet ef database update => command to initial create a db based on migration or when theres an update to the entity
