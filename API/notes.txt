@@ -2,6 +2,8 @@
 >int are primitive type means the default value is 0
 >when a new instance of this class is made, constructor is executed automatically
 >nullable enable means vscode will warn u if the item can become null so u can make null exceptions
+>make sure to dotnet new gitignore before pushing it to github
+>you can gitignore files by going to git icon in sidebar then rightclick the file
 
 ===SHORTCUTS=====
 >ctrl p => search file
