@@ -3,3 +3,17 @@
 > 'selector' is the html tag used to insert this component
 > 'templateUrl' is the html file using the component
 > 'styleUrl' is the css of the template
+> components can have implements
+> oninit is like useeffect that run once after the component mounts
+
+
+===HTTP====
+>can be registered through providers in app.config
+>can be injected in app.component so we can use it in html
+
+===Observables===
+>stream of data that observe for changes
+>needed to subscribe to use it
+>then we can put inside what will happen next, if theres error, and after all completes
+
+
