@@ -1,0 +1,5 @@
+====COMPONENT=====
+>component is the js/ts part of the webpapp
+> 'selector' is the html tag used to insert this component
+> 'templateUrl' is the html file using the component
+> 'styleUrl' is the css of the template
