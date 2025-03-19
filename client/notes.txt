@@ -1,4 +1,10 @@
+====IMPORTANT=====
+>when the Enitity has UserName (Pascal case) is will turn to userName (camel case) when returned in json
+
+
 ====COMPONENT=====
+
+
 >component is the js/ts part of the webpapp
 > 'selector' is the html tag used to insert this component
 > 'templateUrl' is the html file using the component
@@ -15,5 +21,11 @@
 >stream of data that observe for changes
 >needed to subscribe to use it
 >then we can put inside what will happen next, if theres error, and after all completes
+
+===Directives===
+>make sure to inlcude NgFor in the imports in component
+>  *ngFor = loop over arrays like .map
+
+>@for => alternative to ngFor
 
 
