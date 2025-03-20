@@ -7,13 +7,10 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers;
 
 
-[ApiController]
-// api/users
-[Route("api/[controller]")]
-//controllerbase because its mvc without view so it returns json instead of html
 
 //putting database injection inside () is the cleaner version
-public class UsersController(DataContext context) : ControllerBase
+//inherit the apicontroller form baseapicontroller
+public class UsersController(DataContext context) : BaseApiController
 {
 
     [HttpGet]

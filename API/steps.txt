@@ -12,3 +12,5 @@
 >add entity to include passwordhash and salt
 >migrate again => dotnet ef migrations add UserEntityUpdated
 >update database => dotnet ef database update
+>make base controller that other controllers will inherit from
+>make the second controller for register

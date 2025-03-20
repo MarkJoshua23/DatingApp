@@ -12,6 +12,7 @@ public class AppUser
     //so put required= it means we cant make user without username
     public required string UserName { get; set; }
 
+    //required will cause error 404 in reesponse if theres no value sent
     public required byte[] PasswordHash { get; set; }
     public required byte[] PasswordSalt { get; set; }
 }
