@@ -25,3 +25,4 @@
 >dotnet-ef for migration=> u need to install the tool globlly
 >dotnet ef migrations add InitialCreate -o Data/Migrations => this just creates a migration not a db
 >dotnet ef database update => command to initial create a db based on migration or when theres an update to the entity
+>migrate again if theres a change in columns and database update again

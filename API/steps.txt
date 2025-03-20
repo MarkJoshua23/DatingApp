@@ -1,0 +1,14 @@
+>edit configs
+>remove unneccesary files
+>edit program cs to include services for dbcontext
+>install entity pakages
+>make entity
+>make dbcontext
+>make migrations
+>update database
+>edit the controller
+>add cors services
+>add cors to middleware
+>add entity to include passwordhash and salt
+>migrate again => dotnet ef migrations add UserEntityUpdated
+>update database => dotnet ef database update

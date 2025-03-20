@@ -11,4 +11,7 @@ public class AppUser
     //this will warning since it can be null
     //so put required= it means we cant make user without username
     public required string UserName { get; set; }
+
+    public required byte[] PasswordHash { get; set; }
+    public required byte[] PasswordSalt { get; set; }
 }

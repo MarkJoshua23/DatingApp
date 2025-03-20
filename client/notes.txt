@@ -1,10 +1,15 @@
 ====IMPORTANT=====
 >when the Enitity has UserName (Pascal case) is will turn to userName (camel case) when returned in json
+>npm install ngx-bootstrap@19 bootstrap font-awesome
+>add the min.css path to angular.json => styles
 
-
+===SSL====
+>instal mkcert
+>mkdir ssl in client
+>cd ssl
+>put 'mkcert localhost'
+>put ssl config in angular.json => serve => options
 ====COMPONENT=====
-
-
 >component is the js/ts part of the webpapp
 > 'selector' is the html tag used to insert this component
 > 'templateUrl' is the html file using the component
@@ -27,5 +32,8 @@
 >  *ngFor = loop over arrays like .map
 
 >@for => alternative to ngFor
+
+==AUTH==
+>string => hash => salt => unique hashes
 
 
