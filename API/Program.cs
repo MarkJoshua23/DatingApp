@@ -1,4 +1,6 @@
 using API.Data;
+using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,12 @@ builder.Services.AddDbContext<DataContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddCors();
+
+
+//scoped means the service is created once per request
+//meaning after a successful login the token is sent then the service restart in next request
+//<interface,service>
+builder.Services.AddScoped<ITokenService,TokenService>();
 
 var app = builder.Build();
 

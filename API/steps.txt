@@ -17,3 +17,7 @@
 >make DTO for register, make the dto the parameter
 >use hashing password
 >make the endpoint for login, use a separate dto for login
+>make a Service
+>make interface using interface template
+>make the token service
+>add service to program cs

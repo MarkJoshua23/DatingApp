@@ -38,3 +38,9 @@
 >stop by breakpoint
 >go to next line 'step over'
 >enter the function by 'step into'
+
+===SERVICES===
+>make interface using interface template
+>make the service
+>implement the interface in the service
+>interface acts as a template so if you implement it it gives the required methods automaticaly
