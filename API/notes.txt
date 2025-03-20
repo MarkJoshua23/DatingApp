@@ -8,7 +8,7 @@
 
 ===IMPORTANT=====
 >if we use parameters '(string username, string password)' this accepts from query string
->if we use DTO ' (RegisterDto registerDto)' this accepts from body
+>if we use DTO ' (RegisterDto registerDto)' this accepts from
 ===SHORTCUTS=====
 >ctrl p => search file
 >ctrl . => lightbulb/quickfix
@@ -33,3 +33,8 @@
 >use inheritance to DRY
 
 >the controller parameters default looking for query parameter instead of request body
+
+===DEBUGGING===
+>stop by breakpoint
+>go to next line 'step over'
+>enter the function by 'step into'

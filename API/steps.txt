@@ -15,3 +15,5 @@
 >make base controller that other controllers will inherit from
 >make the second controller for register
 >make DTO for register, make the dto the parameter
+>use hashing password
+>make the endpoint for login, use a separate dto for login
