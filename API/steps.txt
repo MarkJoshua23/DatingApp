@@ -14,3 +14,4 @@
 >update database => dotnet ef database update
 >make base controller that other controllers will inherit from
 >make the second controller for register
+>make DTO for register, make the dto the parameter

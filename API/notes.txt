@@ -5,6 +5,10 @@
 >make sure to dotnet new gitignore before pushing it to github
 >you can gitignore files by going to git icon in sidebar then rightclick the file
 
+
+===IMPORTANT=====
+>if we use parameters '(string username, string password)' this accepts from query string
+>if we use DTO ' (RegisterDto registerDto)' this accepts from body
 ===SHORTCUTS=====
 >ctrl p => search file
 >ctrl . => lightbulb/quickfix
