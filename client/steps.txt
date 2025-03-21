@@ -1,0 +1,5 @@
+>copy navbar from bootsrap site
+>make component through terminal
+>ng g c nav --skip-tests => generate a component named nav without tests, it will also generate the template and styles
+>paste nav bootsrap to the nav component html
+>add the selector of nav component to app.component to put a component inside a component=> <app-nav>

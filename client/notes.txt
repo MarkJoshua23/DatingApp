@@ -9,6 +9,8 @@
 >cd ssl
 >put 'mkcert localhost'
 >put ssl config in angular.json => serve => options
+
+
 ====COMPONENT=====
 >component is the js/ts part of the webpapp
 > 'selector' is the html tag used to insert this component
@@ -16,6 +18,7 @@
 > 'styleUrl' is the css of the template
 > components can have implements
 > oninit is like useeffect that run once after the component mounts
+>ng g c nav --skip-tests => generate a component named nav without tests, it will also generate the template and styles
 
 
 ===HTTP====
