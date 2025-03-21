@@ -1,6 +1,7 @@
 using System;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ namespace API.Controllers;
 //inherit the apicontroller form baseapicontroller
 public class UsersController(DataContext context) : BaseApiController
 {
-
+    [AllowAnonymous]
     [HttpGet]
     //Task is used for async
     //ActionResult can return http responses
@@ -29,7 +30,7 @@ public class UsersController(DataContext context) : BaseApiController
     }
 
 
-
+    [Authorize]
     // api/users/{id}
     [HttpGet("{id}")]
     //no IEnumerable if the return is one item

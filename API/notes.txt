@@ -50,5 +50,12 @@
 
 
 ===JWT===
->system.identitymodel.tokens.jwt
+>system.identitymodel.tokens.jwt =>create tokem
+>microsoft.aspnetcore.authentication.jwtbearer => use auth for endpoints
+>[Authorize] emdpoints respone 401 unauthorized if the user is not authorized
+
+===EXTENSIONS====
+> used to clean program cs
+> put the multiple builder.Services to the extension file and use just one on program cs
+>always static
 

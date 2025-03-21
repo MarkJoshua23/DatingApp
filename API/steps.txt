@@ -25,4 +25,10 @@
 >install system.identitymodel.tokens.jwt
 >use it in key making in token service
 >make a DTO of return values for login endpoint (return only username and token not including password)
->inject the itokenservice interface
+>inject the itokenservice interface and use the createtoken method for both the register and login
+>Put [Authorize] in every endpoint that needs authentication
+>microsoft.aspnetcore.authentication.jwtbearer => to use endpoint security
+>Add service jwt in program cs
+>add middleware for auth
+>make extensions to clean up program.cs
+

@@ -1,7 +1,4 @@
-using API.Data;
-using API.Interfaces;
-using API.Services;
-using Microsoft.EntityFrameworkCore;
+using API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,20 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-//dependecy injection will make an instance of the context, () is the options we can send to the dbcontext
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    // send the connection string
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-builder.Services.AddCors();
+//use the extension to make multiple builder.Services into just one
+builder.Services.AddApplicationServices(builder.Configuration);
 
 
-//scoped means the service is created once per request
-//meaning after a successful login the token is sent then the service restart in next request
-//<interface,service>
-builder.Services.AddScoped<ITokenService,TokenService>();
+//used in [Authorize] endpoints
+//also an extension
+builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -31,6 +21,9 @@ var app = builder.Build();
 //Cors should be first before the mapcontrollers
 //withcors is the url of the frontend allowed to access
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
+//authentication first before authorization
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
