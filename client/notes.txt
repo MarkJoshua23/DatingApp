@@ -40,3 +40,16 @@
 >string => hash => salt => unique hashes
 
 
+===template reference variable====
+>#loginForm="ngForm" => making it accessible inside the component.
+>to identify elements instead of id
+
+====FORMS====
+>(ngSubmit)="login()" => to submit the form, to define the method to call after submitting
+>[(ngModel)]="model.username" => two way binding
+>[()] meaning it can receive data from the component and the template can also send data to the component 
+>>>>[(ngModel)]="model.username" → Two-way data binding:
+>>Syncs input field with model.username in your TypeScript.
+>>If the user types, model.username updates automatically.
+>>If model.username changes in the component, it updates in the input.
+
