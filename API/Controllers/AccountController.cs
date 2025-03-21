@@ -4,17 +4,20 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
 //inject dbcontext
-public class AccountController(DataContext context) : BaseApiController
+//inject itokenservice interface that uses the token service method 
+public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
 {
     //the route will now be api/account/register
     [HttpPost("register")]
-    public async Task<ActionResult<AppUser>> Register(RegisterDto registerDto)
+    //return type should be userdto
+    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
 
         //check if username already exist
@@ -37,11 +40,16 @@ public class AccountController(DataContext context) : BaseApiController
         //dbcontext => Dbset Users => Sqlite Add => insert users
         context.Users.Add(user);
         await context.SaveChangesAsync();
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            //use the createtoken method inside the interface
+            Token = tokenService.CreateToken(user)
+        };
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AppUser>> Login(LoginDto loginDto)
+    public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
         //firstordefault looks for user and if theres none it returns null
         var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
@@ -62,7 +70,12 @@ public class AccountController(DataContext context) : BaseApiController
             if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password");
         }
 
-        return user;
+        return new UserDto
+        {
+            Username = user.UserName,
+            //use the createtoken method inside the interface
+            Token = tokenService.CreateToken(user)
+        };
     }
 
     //private method that will only be used in this class

@@ -21,3 +21,8 @@
 >make interface using interface template
 >make the token service
 >add service to program cs
+>implement the interface to token service
+>install system.identitymodel.tokens.jwt
+>use it in key making in token service
+>make a DTO of return values for login endpoint (return only username and token not including password)
+>inject the itokenservice interface

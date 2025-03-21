@@ -44,3 +44,11 @@
 >make the service
 >implement the interface in the service
 >interface acts as a template so if you implement it it gives the required methods automaticaly
+> AddScoped means its recreated per request, good for tokens
+>IMPORTANT!!!! 
+>The interface will be the one to be injected, the service only implements and makes the method that will run when interface is injected
+
+
+===JWT===
+>system.identitymodel.tokens.jwt
+

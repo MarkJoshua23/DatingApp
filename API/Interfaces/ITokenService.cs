@@ -6,5 +6,5 @@ namespace API.Interfaces;
 public interface ITokenService
 {
     //this is the return 'string'
-    string CreateToken(AppUser user)
+    string CreateToken(AppUser user);
 }
