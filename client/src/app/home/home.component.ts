@@ -4,8 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  registerMode = false;
 
+  registerToggle() {
+    //turn the registermode to true or false
+    this.registerMode = !this.registerMode;
+  }
 }
