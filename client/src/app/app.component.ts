@@ -2,12 +2,13 @@ import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavComponent } from "./nav/nav.component";
+import { NavComponent } from './nav/nav.component';
+import { AccountService } from './_services/account.service';
 
 @Component({
   //selector is the html tag used to insert this component
   selector: 'app-root',
-  imports: [RouterOutlet,NavComponent],
+  imports: [RouterOutlet, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -17,10 +18,27 @@ import { NavComponent } from "./nav/nav.component";
 export class AppComponent implements OnInit {
   //inject http so we can use it
   http = inject(HttpClient);
+  //inject the accountservice where we can login and set user
+  private accountService = inject(AccountService);
   title = 'Dating App';
   users: any;
 
   ngOnInit(): void {
+    this.getUsers();
+    //to check if theres user logged in
+    this.setCurrentUser();
+  }
+
+  setCurrentUser() {
+    const userString = localStorage.getItem('user');
+    if (!userString) return;
+    //this will return as object
+    const user = JSON.parse(userString);
+    //change global state of the user
+    this.accountService.currentUser.set(user);
+  }
+
+  getUsers() {
     //use 'this.' when using class property
     //all observables need subscribe
     this.http.get('https://localhost:5001/api/users').subscribe({

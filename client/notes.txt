@@ -28,8 +28,9 @@
 
 ===Observables===
 >stream of data that observe for changes
->needed to subscribe to use it
+>needed to .subscribe to use it
 >then we can put inside what will happen next, if theres error, and after all completes
+> 'pipe' to do something with the return values, so any components that subscribe will do the same pipe function
 
 ===Directives===
 >make sure to inlcude NgFor in the imports in component
@@ -73,3 +74,11 @@
 >starts with * like *ngif *ngfor
 >changes the dom so it brings ui changes
 
+===SIGNALS===
+>ntofies consumers when a value changes
+>automatically unsubscribe/cleanup
+>used in state management
+
+===MODELS===
+>typically just types
+> always use 'interface' instead of 'type'

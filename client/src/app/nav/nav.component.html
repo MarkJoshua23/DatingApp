@@ -2,8 +2,8 @@
     <div class="container">
         <a class="navbar-brand" href="#">Dating App</a>
 
-        <!-- show links only if the user is logged in-->
-        @if(loggedIn === true){
+        <!-- show links only if theres user-->
+        @if(accountService.currentUser()){
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
                 <a class="nav-link" href="#">Matches</a>
@@ -18,7 +18,7 @@
                 <a class="nav-link" (click)="logout()" href="#">Logout</a>
             </li>
         </ul>
-        } @if (loggedIn) {
+        } @if (accountService.currentUser()) {
         <!-- put 'dropdown' directive in dropdown root-->
         <div dropdown class="dropdown">
             <!-- put 'dropdownToggle' in link that serves as toggle-->
@@ -35,7 +35,7 @@
         } 
         
         
-        @if (!loggedIn) {
+        @if (!accountService.currentUser()) {
         <form
             #loginForm="ngForm"
             (ngSubmit)="login()"

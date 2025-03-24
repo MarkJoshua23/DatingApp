@@ -4,31 +4,29 @@ import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @Component({
-    selector: 'app-nav',
-    //formsmodule to use form
-    imports: [FormsModule, BsDropdownModule],
-    templateUrl: './nav.component.html',
-    styleUrl: './nav.component.css',
+  selector: 'app-nav',
+  //formsmodule to use form
+  imports: [FormsModule, BsDropdownModule],
+  templateUrl: './nav.component.html',
+  styleUrl: './nav.component.css',
 })
 export class NavComponent {
-    private accountService = inject(AccountService);
-    loggedIn = false;
-    //this is the model.username, model.password in template
-    model: any = {};
+  accountService = inject(AccountService);
+  //this is the model.username, model.password in template
+  model: any = {};
 
-    //angular methods
-    login() {
-        //the services returns an observable not the values
-        //subscribe to the returned observable
-        this.accountService.login(this.model).subscribe({
-            next: (response) => {
-                console.log(response);
-                this.loggedIn = true;
-            },
-            error: (error) => console.log(error),
-        });
-    }
-    logout() {
-        this.loggedIn = false;
-    }
+  //angular methods
+  login() {
+    //the services returns an observable not the values
+    //subscribe to the returned observable
+    this.accountService.login(this.model).subscribe({
+      next: (response) => {
+        console.log('user', response);
+      },
+      error: (error) => console.log(error),
+    });
+  }
+  logout() {
+    this.accountService.logout();
+  }
 }
