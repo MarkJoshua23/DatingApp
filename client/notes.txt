@@ -64,3 +64,12 @@
 > something that is shared for all components
 > when injected inside component it doesn't return the actual data—it returns an Observable
 
+===BOOTSTRAP===
+>to enable interactivity like dropdown
+>u need to put the provider in app.config.ts
+>then put the import module in compoenent imports
+
+===STRUCTURAL DIRECTIVES====
+>starts with * like *ngif *ngfor
+>changes the dom so it brings ui changes
+
