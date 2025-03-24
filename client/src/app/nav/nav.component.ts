@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class NavComponent {
   //this is the model.username, model.password in template
-
   model: any = {};
 
   //angular methods

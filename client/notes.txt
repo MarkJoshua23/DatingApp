@@ -18,7 +18,7 @@
 > 'styleUrl' is the css of the template
 > components can have implements
 > oninit is like useeffect that run once after the component mounts
->ng g c nav --skip-tests => generate a component named nav without tests, it will also generate the template and styles
+> ng g c nav --skip-tests => generate a component named nav without tests, it will also generate the template and styles
 
 
 ===HTTP====
@@ -52,4 +52,13 @@
 >>Syncs input field with model.username in your TypeScript.
 >>If the user types, model.username updates automatically.
 >>If model.username changes in the component, it updates in the input.
+
+====SERVICES====
+>HTTP request are commonly sent through services
+> items fetched by a service can be shared across all components
+> ng g s _services/account --skip-tests ==> create a services is _services directory
+>services can be injected to any component
+> services are SINGLETONS
+> Iinitialized when the app is visted
+> something that is shared for all components
 
