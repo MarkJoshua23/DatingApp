@@ -28,7 +28,10 @@ export class AccountService {
           //set the signal to user, this will rerender all components that uses this
           this.currentUser.set(user);
         }
+        //if u want to still return the user values
+        return user
       })
+      
     );
   }
 

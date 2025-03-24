@@ -11,6 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   styleUrl: './nav.component.css',
 })
 export class NavComponent {
+    //use this service to use login or access the currentuser state
   accountService = inject(AccountService);
   //this is the model.username, model.password in template
   model: any = {};
