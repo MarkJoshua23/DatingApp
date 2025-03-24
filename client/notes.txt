@@ -3,6 +3,8 @@
 >npm install ngx-bootstrap@19 bootstrap font-awesome
 >add the min.css path to angular.json => styles
 >anything inside the component can be used inside that 
+>private method will not be accessed by its template
+>DONT FORGET to return the RESPONSE if you pipe a http
 
 ===SSL====
 >instal mkcert
@@ -78,7 +80,17 @@
 >ntofies consumers when a value changes
 >automatically unsubscribe/cleanup
 >used in state management
+>using SIGNALS need () at the end if you want to get the value
 
 ===MODELS===
 >typically just types
 > always use 'interface' instead of 'type'
+
+===PARENT TO CHILD=====
+>put input signal in CHILD
+>pass the values in parent template in []
+>use the signal in child template with ()
+
+===CHILD TO PARENT=====
+>put output signal in CHILD
+>put the out in parent template in () then the parent method that will receive the values from child
