@@ -2,6 +2,7 @@
 >when the Enitity has UserName (Pascal case) is will turn to userName (camel case) when returned in json
 >npm install ngx-bootstrap@19 bootstrap font-awesome
 >add the min.css path to angular.json => styles
+>anything inside the component can be used inside that 
 
 ===SSL====
 >instal mkcert
@@ -61,4 +62,5 @@
 > services are SINGLETONS
 > Iinitialized when the app is visted
 > something that is shared for all components
+> when injected inside component it doesn't return the actual data—it returns an Observable
 
