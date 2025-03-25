@@ -106,3 +106,10 @@
 >add it to the provider
 >add it to the angular json in styles
 >inject toastrservice in component that will use toastr
+
+====ROUTE GUARDS===
+>ng g g _guards/auth --skip-tests
+>choose canactivate
+>make the guard conditions
+>return true for allowed access, false for not allowed to access
+>put the canactivate in routes.ts to activate the guard
