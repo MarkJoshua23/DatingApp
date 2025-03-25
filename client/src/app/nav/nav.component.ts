@@ -2,11 +2,15 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   //formsmodule to use form
-  imports: [FormsModule, BsDropdownModule],
+  //BsDropdownModule for dropdown directives
+  //routerlink for routers
+  //routerlinkactive to specify the active link/button/tab so we can style it accordingly
+  imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })

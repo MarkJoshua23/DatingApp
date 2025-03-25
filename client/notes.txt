@@ -97,3 +97,6 @@
 
 ===ROUTES====
 >put routes in app.routes
+>put outlet in component where other component will render
+>put routerLink="/routename" in <a> tags
+> put routerLinkActive="active" to add classes if the link is active(if the current route/path is the same as the tag in its routelink) 
