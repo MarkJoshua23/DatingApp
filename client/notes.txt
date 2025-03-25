@@ -100,3 +100,8 @@
 >put outlet in component where other component will render
 >put routerLink="/routename" in <a> tags
 > put routerLinkActive="active" to add classes if the link is active(if the current route/path is the same as the tag in its routelink) 
+
+====TOASTS===
+>npm install ngx-toastr
+>add it to the provider
+>add it to the angular json in styles
