@@ -61,7 +61,7 @@
 >HTTP request are commonly sent through services
 > items fetched by a service can be shared across all components
 > ng g s _services/account --skip-tests ==> create a services is _services directory
->services can be injected to any component
+>services is always INJECTED to any component
 > services are SINGLETONS
 > Iinitialized when the app is visted
 > something that is shared for all components
@@ -105,3 +105,4 @@
 >npm install ngx-toastr
 >add it to the provider
 >add it to the angular json in styles
+>inject toastrservice in component that will use toastr

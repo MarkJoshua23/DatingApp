@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -17,6 +18,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class NavComponent {
   //use this service to use login or access the currentuser state
   accountService = inject(AccountService);
+  private toastr= inject(ToastrService)
   //this is the model.username, model.password in template
   model: any = {};
 
@@ -32,7 +34,7 @@ export class NavComponent {
         //navigate the user to members component
         this.router.navigateByUrl('/members');
       },
-      error: (error) => console.log(error),
+      error: (error) => this.toastr.error(error.error),
     });
   }
   logout() {
