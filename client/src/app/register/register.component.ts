@@ -29,6 +29,7 @@ export class RegisterComponent {
   }
 
   cancel() {
+    //emit to send values to parent
     this.cancelRegister.emit(false);
   }
 }
