@@ -59,3 +59,8 @@
 > put the multiple builder.Services to the extension file and use just one on program cs
 >always static
 
+====MIDDLEWARES====
+>errors will find the nearest catch
+> exceptions middleware is helpful to catch errors
+>if exception middleware is first then all errors in next middlewares will be catched by it
+

@@ -31,4 +31,5 @@
 >Add service jwt in program cs
 >add middleware for auth
 >make extensions to clean up program.cs
+>make exceptions/errors middleware
 
