@@ -113,3 +113,6 @@
 >make the guard conditions
 >return true for allowed access, false for not allowed to access
 >put the canactivate in routes.ts to activate the guard
+
+==THEME====
+>npm i bootswatch

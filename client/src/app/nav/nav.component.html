@@ -1,25 +1,44 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
-        <a class="navbar-brand" routerLink="/" >Dating App</a>
+        <a class="navbar-brand" routerLink="/">Dating App</a>
 
-        <!-- show links only if theres user-->
-        @if(true){
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <!-- show links only if theres user-->
+            @if(accountService.currentUser()){
             <li class="nav-item">
                 <!-- routerlinkactive will apply "active" if the current path is /members -->
-                <a routerLink="/members" routerLinkActive="active" class="nav-link" href="#">Matches</a>
+                <a
+                    routerLink="/members"
+                    routerLinkActive="active"
+                    class="nav-link"
+                    href="#"
+                    >Matches</a
+                >
             </li>
             <li class="nav-item">
-                <a routerLink="/lists" routerLinkActive="active" class="nav-link" href="#">Lists</a>
+                <a
+                    routerLink="/lists"
+                    routerLinkActive="active"
+                    class="nav-link"
+                    href="#"
+                    >Lists</a
+                >
             </li>
             <li class="nav-item">
-                <a routerLink="/messages" routerLinkActive="active" class="nav-link" href="#">Messages</a>
+                <a
+                    routerLink="/messages"
+                    routerLinkActive="active"
+                    class="nav-link"
+                    href="#"
+                    >Messages</a
+                >
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="logout()" href="#">Logout</a>
             </li>
+            }
         </ul>
-        } @if (accountService.currentUser()) {
+        @if (accountService.currentUser()) {
         <!-- put 'dropdown' directive in dropdown root-->
         <div dropdown class="dropdown">
             <!-- put 'dropdownToggle' in link that serves as toggle-->
@@ -27,7 +46,8 @@
                 dropdownToggle
                 class="dropdown-toggle text-light text-decoration-none"
             >
-                Welcome {{ accountService.currentUser()?.username }}
+            <!-- ' | titlecase make the first letter uppercase' -->
+                Welcome {{ accountService.currentUser()?.username | titlecase }}
             </a>
             <!-- put *dropdownMenu as structural directive/changes the dom-->
             <div *dropdownMenu class="dropdown-menu">
@@ -58,7 +78,7 @@
                 placeholder="Password"
                 type="password"
             />
-            <button class="btn btn-outline-success" type="submit">Login</button>
+            <button class="btn btn-info" type="submit">Login</button>
         </form>
         }
     </div>
