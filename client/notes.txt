@@ -94,3 +94,6 @@
 ===CHILD TO PARENT=====
 >put output signal in CHILD
 >put the out in parent template in () then the parent method that will receive the values from child
+
+===ROUTES====
+>put routes in app.routes
