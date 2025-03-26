@@ -33,10 +33,21 @@
                     >Messages</a
                 >
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" (click)="logout()" href="#">Logout</a>
             </li>
             }
+            <!-- nav items that appear even if not authenticated -->
+            <li class="nav-item">
+                <a
+                    routerLink="/errors"
+                    routerLinkActive="active"
+                    class="nav-link"
+                    href="#"
+                    >Errors</a
+                >
+            </li>
         </ul>
         @if (accountService.currentUser()) {
         <!-- put 'dropdown' directive in dropdown root-->
@@ -46,7 +57,7 @@
                 dropdownToggle
                 class="dropdown-toggle text-light text-decoration-none"
             >
-            <!-- ' | titlecase make the first letter uppercase' -->
+                <!-- ' | titlecase make the first letter uppercase' -->
                 Welcome {{ accountService.currentUser()?.username | titlecase }}
             </a>
             <!-- put *dropdownMenu as structural directive/changes the dom-->
