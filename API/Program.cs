@@ -1,5 +1,7 @@
+using API.Data;
 using API.Extensions;
 using API.Middleware;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,5 +30,26 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localho
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+//to use a service in programcs without dependency injection
+// 'using' auto dispose it after using
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    //now we can use the datacontext
+    var context = services.GetRequiredService<DataContext>();
+    //create db if theres still no db
+    //apply the migrations to db
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
+    
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occured during migration");
+}
+
 
 app.Run();
