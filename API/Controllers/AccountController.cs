@@ -23,29 +23,29 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         //check if username already exist
         if (await UserExists(registerDto.Username)) return BadRequest("Username is already taken");
 
+        return Ok();
+        // //using handles the disposing after using
+        // using var hmac = new HMACSHA512();
 
-        //using handles the disposing after using
-        using var hmac = new HMACSHA512();
-
-        //put values in the AppUser Entity
-        var user = new AppUser
-        {
-            //save username in lowercase
-            UserName = registerDto.Username.ToLower(),
-            //turn the string password to bytes then hash it
-            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            //store the salt generated when hashing
-            PasswordSalt = hmac.Key
-        };
-        //dbcontext => Dbset Users => Sqlite Add => insert users
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-        return new UserDto
-        {
-            Username = user.UserName,
-            //use the createtoken method inside the interface
-            Token = tokenService.CreateToken(user)
-        };
+        // //put values in the AppUser Entity
+        // var user = new AppUser
+        // {
+        //     //save username in lowercase
+        //     UserName = registerDto.Username.ToLower(),
+        //     //turn the string password to bytes then hash it
+        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //     //store the salt generated when hashing
+        //     PasswordSalt = hmac.Key
+        // };
+        // //dbcontext => Dbset Users => Sqlite Add => insert users
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
+        // return new UserDto
+        // {
+        //     Username = user.UserName,
+        //     //use the createtoken method inside the interface
+        //     Token = tokenService.CreateToken(user)
+        // };
     }
 
     [HttpPost("login")]

@@ -1,3 +1,5 @@
+
+===FOUNDATION====
 >edit configs
 >remove unneccesary files
 >edit program cs to include services for dbcontext
@@ -32,4 +34,6 @@
 >add middleware for auth
 >make extensions to clean up program.cs
 >make exceptions/errors middleware
-
+====EXTENDING THE API===
+>add columns for appuser entity
+>make the photo.cs
