@@ -116,3 +116,10 @@
 
 ==THEME====
 >npm i bootswatch
+
+===INTERCEPTORS==
+>intercept http request and check for errors
+>ng g interceptor _interceptors/error --skip-tests
+>helpful for centralized error catcher
+>so there will be only one toastr for all errors
+> add withInterceptors([errorInterceptor]) in provider in config
