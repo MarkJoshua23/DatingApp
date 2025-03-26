@@ -42,7 +42,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             break;
 
           case 500:
-            //this will carry the errors
+            //this will carry the errors to pass it to the route component
             const navigationExtras: NavigationExtras = {
               state: { error: error.error },
             };
@@ -54,6 +54,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             break;
         }
       }
+      //to let the 'error' in subscribe catch it 
       throw error;
     })
   );

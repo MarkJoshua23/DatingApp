@@ -123,3 +123,8 @@
 >helpful for centralized error catcher
 >so there will be only one toastr for all errors
 > add withInterceptors([errorInterceptor]) in provider in config
+>the return errors will be catched by 'error:' in subscribe
+>things we can do with the intercepted errors:
+   >toast
+   >notfound page
+   >validation error warning in forms input
