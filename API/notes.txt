@@ -34,6 +34,9 @@
 
 >the controller parameters default looking for query parameter instead of request body
 
+>to use 'Include' there should be nav property in both tables
+>the default ondelete if u make the entity required in relationship is cascade
+
 ===DEBUGGING===
 >stop by breakpoint
 >go to next line 'step over'

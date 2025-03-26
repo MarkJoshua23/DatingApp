@@ -36,4 +36,7 @@
 >make exceptions/errors middleware
 ====EXTENDING THE API===
 >add columns for appuser entity
->make the photo.cs
+>make the photo entity ==> dont forget the nav properties
+>make a dateonly extension for age calculation
+>make another migrations to update
+>dotnet ef migrations add UpdatedUserEntity

@@ -1,4 +1,5 @@
 using System;
+using API.Extensions;
 
 namespace API.Entities;
 
@@ -29,5 +30,12 @@ public class AppUser
     public string? LookingFor { get; set; }
     public required string City { get; set; }
     public required string Country { get; set; }
+    //one to many => one user can have many photo
+    //this will create a tbl for photos
+    //navigation prop => access photos through user
     public List<Photo> Photos { get; set; } = [];
+
+    public int GetAge(){
+        return DateOfBirth.CalculateAge();
+    }
 }
