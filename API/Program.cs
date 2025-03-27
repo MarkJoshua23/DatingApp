@@ -42,6 +42,8 @@ try
     //create db if theres still no db
     //apply the migrations to db
     await context.Database.MigrateAsync();
+    //seed the data
+    //call directly without instance since its static
     await Seed.SeedUsers(context);
 }
 catch (Exception ex)

@@ -40,3 +40,6 @@
 >make a dateonly extension for age calculation
 >make another migrations to update
 >dotnet ef migrations add UpdatedUserEntity
+>add the updating migration and seeding in program cs
+> drop by dotnet ef database drop
+> run it again to apply migration and seed users
