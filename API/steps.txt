@@ -49,3 +49,8 @@
 >add it in service extension
 >remove the datacontext in controller and inject the userRepository instead
 >Make a DTO for the return to fix json serializer problem
+> install automapper from nuget
+>setup automapperprofiles in helpers folder
+>add automapper service to the extension
+>switch return types of controllers to DTO
+>inject automapper and map entities to DTO on controllers
