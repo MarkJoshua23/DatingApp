@@ -67,3 +67,7 @@
 > exceptions middleware is helpful to catch errors
 >if exception middleware is first then all errors in next middlewares will be catched by it
 
+===REPOSITORY====
+>layer between controller and db context(normally controller connects directly to dbcontext to access db)
+>encapsulate dbcontext logic (.include,.find,.where,etc)
+

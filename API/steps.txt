@@ -43,3 +43,7 @@
 >add the updating migration and seeding in program cs
 > drop by dotnet ef database drop
 > run it again to apply migration and seed users
+>start making the repository
+> make the IUserRepository interface
+>implement it in the data folder (implementation class/service)
+>add it in service extension

@@ -26,6 +26,7 @@ public static class ApplicationServiceExtensions
         //meaning after a successful login the token is sent then the service restart in next request
         //<interface,service>
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
