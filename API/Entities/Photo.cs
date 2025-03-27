@@ -13,6 +13,7 @@ public class Photo
 
 
     //these are needed if we want the appuser to be required when making this
+    // Entityname+'Id' is the convention to detect that its the foreign key
     public int AppUserId { get; set; } //==>foreign key
     //Navigation Property to know what entity it is connected
     public AppUser AppUser { get; set; } =null!; //===> nav property

@@ -47,3 +47,5 @@
 > make the IUserRepository interface
 >implement it in the data folder (implementation class/service)
 >add it in service extension
+>remove the datacontext in controller and inject the userRepository instead
+>Make a DTO for the return to fix json serializer problem

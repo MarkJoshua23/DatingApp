@@ -17,13 +17,18 @@ public class UserRepository(DataContext context) : IUserRepository
     public async Task<AppUser?> GetUserByUserNameAsync(string username)
     {
         //get the user with the same username
-        return await context.Users.SingleOrDefaultAsync(x=> x.UserName == username);
+        return await context.Users
+        .Include(x=> x.Photos)
+        .SingleOrDefaultAsync(x=> x.UserName == username);
     }
 
     //get all users
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {
-        return await context.Users.ToListAsync();
+        return await context.Users
+        //include the photos tbl, like joins
+        .Include(x=> x.Photos)
+        .ToListAsync();
     }
 
 
