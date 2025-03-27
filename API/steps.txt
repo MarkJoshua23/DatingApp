@@ -54,3 +54,6 @@
 >add automapper service to the extension
 >switch return types of controllers to DTO
 >inject automapper and map entities to DTO on controllers
+>optimize repository by projecting to dto in query instead of returning all fields then automapping
+>do the mapping in repository instead
+>remove automapper in controller

@@ -15,7 +15,7 @@ namespace API.Controllers;
 //putting injection inside () is the cleaner version
 //inherit the apicontroller form baseapicontroller
 //inject the repository that manages the dbcontext
-public class UsersController(IUserRepository userRepository, IMapper mapper) : BaseApiController
+public class UsersController(IUserRepository userRepository) : BaseApiController
 {
 
     [HttpGet]
@@ -26,13 +26,13 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
     {
         //use await for possible code that can block the process
         //use repository method
-        var users = await userRepository.GetUsersAsync();
+        var users = await userRepository.GetMembersAsync();
 
         //map users<AppUser> to <MemberDto>
-        var usersToReturn = mapper.Map<IEnumerable<MemberDto>>(users);
+        // var usersToReturn = mapper.Map<IEnumerable<MemberDto>>(users);
 
         //status code 200 ok along with the users
-        return Ok(usersToReturn);
+        return Ok(users);
     }
 
 
@@ -42,13 +42,14 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
     //no IEnumerable if the return is one item
     public async Task<ActionResult<MemberDto>> GetUsers(string username)
     {
-        var user = await userRepository.GetUserByUserNameAsync(username);
+        var user = await userRepository.GetMemberAsync(username);
 
         //null checker
         if (user == null) return NotFound();
 
         //status code 200 ok along with the users mapped to Dto
-        return mapper.Map<MemberDto>(user);
+        // return mapper.Map<MemberDto>(user);
+        return user;
     }
 
 

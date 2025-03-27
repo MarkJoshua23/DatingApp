@@ -1,12 +1,31 @@
 using System;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data;
 //inject dbcontext/datacontext
-public class UserRepository(DataContext context) : IUserRepository
+public class UserRepository(DataContext context, IMapper mapper) : IUserRepository
 {
+    //return only the required values of memberdto
+    public async Task<MemberDto?> GetMemberAsync(string username)
+    {
+        return await context.Users
+        .Where(x=> x.UserName == username)
+        .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
+        .SingleOrDefaultAsync();
+    }
+
+    public async Task<IEnumerable<MemberDto>> GetMembersAsync()
+    {
+        return await context.Users
+        .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
+        .ToListAsync();
+    }
+
     //return users with the given id
     public async Task<AppUser?> GetUserByIdAsync(int id)
     {
@@ -14,6 +33,7 @@ public class UserRepository(DataContext context) : IUserRepository
         return await context.Users.FindAsync(id);
     }
 
+    //return all appuser and photos entity
     public async Task<AppUser?> GetUserByUserNameAsync(string username)
     {
         //get the user with the same username

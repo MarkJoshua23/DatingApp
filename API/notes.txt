@@ -71,8 +71,9 @@
 >layer between controller and db context(normally controller connects directly to dbcontext to access db)
 >encapsulate dbcontext logic (.include,.find,.where,etc)
 >replace the dbcontext injection in controller
+>do all the mapping here automapper
 
 ===DTO====
 >it is recommended to always make a DTO for the return to prevent security and serializer problems
->
+
 

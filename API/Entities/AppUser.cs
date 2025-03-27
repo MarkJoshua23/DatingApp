@@ -35,7 +35,4 @@ public class AppUser
     //navigation prop => access photos through user
     public List<Photo> Photos { get; set; } = [];
 
-    public int GetAge(){
-        return DateOfBirth.CalculateAge();
-    }
 }

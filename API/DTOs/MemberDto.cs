@@ -10,7 +10,7 @@ public class MemberDto
     public int Id { get; set; }
     //automapper can map with different case
     public string? Username { get; set; }
-    //Automapper will run the GetAge since it has Age
+    //Automapper will populate based on config on profiles
     public int Age { get; set; }
     public string? PhotoUrl { get; set; }
     public string? KnownAs { get; set; }
