@@ -8,15 +8,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
-  //inject http so we can use it
-  http = inject(HttpClient);
+export class HomeComponent {
   registerMode = false;
-  users: any;
 
-  ngOnInit(): void {
-    this.getUsers();
-  }
+
   registerToggle() {
     //turn the registermode to true or false
     this.registerMode = !this.registerMode;
@@ -25,21 +20,21 @@ export class HomeComponent implements OnInit {
     //to cancel the register form ui
     this.registerMode = event;
   }
-  getUsers() {
-    //use 'this.' when using class property
-    //all observables need subscribe
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      //what will happen next after theres a return
-      //put the respose to the class property 'users'
-      next: (response) => (this.users = response),
+  // getUsers() {
+  //   //use 'this.' when using class property
+  //   //all observables need subscribe
+  //   this.http.get('https://localhost:5001/api/users').subscribe({
+  //     //what will happen next after theres a return
+  //     //put the respose to the class property 'users'
+  //     next: (response) => (this.users = response),
 
-      //what will happen if theres error
-      error: (error) => {
-        console.log(error);
-      },
+  //     //what will happen if theres error
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
 
-      //what will happen after next
-      complete: () => console.log('Request has completed' + this.users),
-    });
-  }
+  //     //what will happen after next
+  //     complete: () => console.log('Request has completed' + this.users),
+  //   });
+  // }
 }
