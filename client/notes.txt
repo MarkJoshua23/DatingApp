@@ -135,3 +135,4 @@
 
 ====ENV=====
 >ng g environments
+>when importing make sure its from environment and not environment.development

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment';
 //SINGLETON
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { map } from 'rxjs';
 export class AccountService {
   //inject http
   private http = inject(HttpClient);
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   //it can be a User type or it can be null
   //using signal as global state management, changes here will change all that uses this
   currentUser = signal<User | null>(null);
