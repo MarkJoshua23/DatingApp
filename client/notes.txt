@@ -128,6 +128,9 @@
    >toast
    >notfound page
    >validation error warning in forms input
+>================IMPORTANTTT
+>can also intercept request before going to server
+>intercept request => give token header => send to server 
 
 ===NAVIGATION EXTRAS===
 >values u can send along with switching route programatically

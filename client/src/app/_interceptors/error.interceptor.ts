@@ -9,6 +9,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastr = inject(ToastrService);
 
   //observable so we can do something with the return using pipe
+  //Do something with the return of the request
   return next(req).pipe(
     //catch errors or requests interceted and do something with it
     catchError((error) => {

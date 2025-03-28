@@ -15,23 +15,27 @@ export class MembersService {
 
   //this has return of Member[] type
   getMembers() {
-    return this.http.get<Member[]>(this.baseUrl + 'users',this.getHttpOptions());
+    //header is attached by interceptor, not here
+    return this.http.get<Member[]>(this.baseUrl + 'users');
   }
 
   
   getMember(username: string) {
-    return this.http.get<Member>(this.baseUrl + 'users/' + username,this.getHttpOptions());
+    //header is attached by interceptor, not here
+    return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
-  getHttpOptions(){
-    return{
-      //headers for the request
-      headers: new HttpHeaders({
-        //send the token from the signal
-        Authorization: `Bearer ${this.accountService.currentUser()?.token}`
-      })
-    }
-  }
+  //this will not be needed since header is attached by interceptor
+
+  // getHttpOptions(){
+  //   return{
+  //     //headers for the request
+  //     headers: new HttpHeaders({
+  //       //send the token from the signal
+  //       Authorization: `Bearer ${this.accountService.currentUser()?.token}`
+  //     })
+  //   }
+  // }
   // we dont need the constructor for function version on inject
   // constructor() { }
 }

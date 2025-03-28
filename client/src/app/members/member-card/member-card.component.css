@@ -12,6 +12,32 @@
     transition-timing-function: ease-out;
 }
 
+/* prevent img from spilling the card */
 .card-img-wrapper {
     overflow: hidden;
+    position: relative;
+}
+
+/* initial position is below the image */
+.member-icons{
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0;
+}
+
+
+/* 👉 When you hover over .card-img-wrapper,
+👉 Then apply styles to .member-icons inside it. */
+.card-img-wrapper:hover .member-icons{
+    /* makes the icons pop up */
+    bottom: 0;
+    opacity: 1;
+}
+
+.animate{
+    transition: all 0.3s ease-in-out;
 }
