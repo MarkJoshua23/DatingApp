@@ -133,3 +133,5 @@
 >values u can send along with switching route programatically
 >can only be accessed by the route that will receive by using a constructor
 
+====ENV=====
+>ng g environments
