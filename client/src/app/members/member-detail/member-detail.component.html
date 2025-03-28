@@ -1,1 +1,65 @@
-<h1>{{member?.knownAs}}</h1>
+@if (member) {
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <!-- if no photoURl then show placeholder image -->
+            <img
+                src="{{ member.photoUrl || 'user.png' }}"
+                alt="{{ member.knownAs }}"
+                class="card-img img-thumbnail"
+            />
+            <div class="card-body">
+                <div class="">
+                    <strong>Location:</strong>
+                    <p>{{ member.city }}, {{ member.country }}</p>
+                </div>
+                <div class="">
+                    <strong>Age:</strong>
+                    <p>{{ member.age }}</p>
+                </div>
+                <div class="">
+                    <strong>Last Active:</strong>
+                    <p>{{ member.lastActive }}</p>
+                </div>
+                <div class="">
+                    <strong>Member Since:</strong>
+                    <p>{{ member.created }}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like</button>
+                    <button class="btn btn-success">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <!-- tabset is from angular bootstrap, can only be css overrided in the global css -->
+        <tabset class="member-tabset">
+            <tab heading="About {{ member.knownAs }}">
+                <!-- whats inside the tab 'about' -->
+                <h4>Description</h4>
+                <p>{{ member.introduction }}</p>
+                <h4>Looking for</h4>
+                <p>{{ member.lookingFor }}</p>
+            </tab>
+            <tab heading="Interests">
+                <h4>Interests</h4>
+                <p>{{ member.interests }}</p>
+            </tab>
+            <!-- '#' is template refernce variable to check if active -->
+            <tab heading="Photos" #photoTab="tab">
+                <!-- show the photos if the tab is active -->
+                @if (photoTab.active) {
+                    <gallery [items]="images" class="gallery"></gallery>
+                }
+                
+            </tab>
+            <tab heading="Messages">
+                <p>Messages here</p>
+            </tab>
+        </tabset>
+    </div>
+</div>
+}
