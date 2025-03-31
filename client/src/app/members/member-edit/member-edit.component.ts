@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild, ɵgetInjectableDef } from '@angular/core';
+import { Component, HostListener, inject, OnInit, ViewChild, ɵgetInjectableDef } from '@angular/core';
 import { Member } from '../../_models/member';
 import { AccountService } from '../../_services/account.service';
 import { MembersService } from '../../_services/members.service';
@@ -15,6 +15,13 @@ import { ToastrService } from 'ngx-toastr';
 export class MemberEditComponent implements OnInit{
   //to access the ngform to see if its dirty
   @ViewChild('editForm') editForm?:NgForm;
+  //beforeunload is the event when leaving the page using the browser
+  //browser will show dialog
+  @HostListener('window:beforeunload',['$event']) notify($event:any){
+    if (this.editForm?.dirty){
+      $event.returnValue = true
+    }
+  }
   member?: Member;
   private accountService = inject(AccountService)
   private memberService = inject (MembersService )

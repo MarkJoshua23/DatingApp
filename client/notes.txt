@@ -115,6 +115,8 @@
 >make the guard conditions
 >return true for allowed access, false for not allowed to access
 >put the canactivate in routes.ts to activate the guard
+>CANDEACTIVATE = another guard that prevents user from leaving
+>CANDEACTIVATE = true=> navigate to the page the user clicked, false=> stay in the page
 
 ==THEME====
 >npm i bootswatch
