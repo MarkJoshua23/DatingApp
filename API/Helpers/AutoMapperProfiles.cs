@@ -28,8 +28,7 @@ public class AutoMapperProfiles: Profile
             //use the value to populate age
             s => s.DateOfBirth.CalculateAge() 
         ));
-
-
         CreateMap<Photo, PhotoDto>();
+        CreateMap<MemberUpdateDto,AppUser>();
     }
 }

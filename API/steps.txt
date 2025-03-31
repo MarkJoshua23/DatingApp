@@ -57,3 +57,5 @@
 >optimize repository by projecting to dto in query instead of returning all fields then automapping
 >do the mapping in repository instead
 >remove automapper in controller
+>make dto for updating user info
+>add httpput endpoint for update
