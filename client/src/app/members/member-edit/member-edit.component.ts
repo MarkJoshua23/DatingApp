@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-member-edit',
-  imports: [TabsModule, FormsModule],
+  imports: [TabsModule, FormsModule,],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })

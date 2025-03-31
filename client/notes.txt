@@ -146,3 +146,8 @@
 
 ===GALLERY===
 >npm i ng-gallery
+>put GalleryModule in imports
+
+===SPINNER===
+>npm install ngx-spinner
+>put ngxspinner in app config along with providers
