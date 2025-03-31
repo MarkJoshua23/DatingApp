@@ -151,3 +151,7 @@
 ===SPINNER===
 >npm install ngx-spinner
 >put ngxspinner in app config along with providers
+>make interceptor for it
+>add interceptor to app config
+>add it to the app.component.html with <h3>Loading...</h3> inside
+> add NgxSpinnerComponent to app.component.ts
