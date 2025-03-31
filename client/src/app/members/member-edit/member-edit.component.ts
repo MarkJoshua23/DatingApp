@@ -41,9 +41,15 @@ export class MemberEditComponent implements OnInit{
   }
 
   updateMember(){
-    console.log(this.member)
-    this.toastr.success("Profile updated successfully!")
-    //after submitted reset it to member
-    this.editForm?.reset(this.member)
+    console.log(this.editForm?.value)
+    //to send just the needed fields and not all member values
+    this.memberService.updateMember(this.editForm?.value).subscribe({
+      next: _ => {
+        this.toastr.success("Profile updated successfully!")
+        //after submitted reset it to member
+        this.editForm?.reset(this.member)
+      }
+    })
+
   }
 }
