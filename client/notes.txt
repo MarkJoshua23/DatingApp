@@ -56,6 +56,8 @@
 >>Syncs input field with model.username in your TypeScript.
 >>If the user types, model.username updates automatically.
 >>If model.username changes in the component, it updates in the input.
+>IMPORTANT: 
+  > DIRTY means there are changes in form
 
 ====SERVICES====
 >HTTP request are commonly sent through services
