@@ -1,22 +1,21 @@
-using System;
 using System.Security.Claims;
-using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
 //all endpoints are now needed authorization
+//Can now access User object to get the username in token
 [Authorize]
 //putting injection inside () is the cleaner version
 //inherit the apicontroller form baseapicontroller
 //inject the repository that manages the dbcontext
-public class UsersController(IUserRepository userRepository, IMapper mapper) : BaseApiController
+public class UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService) : BaseApiController
 {
 
     [HttpGet]
@@ -57,11 +56,7 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
     [HttpPut]
     public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
     {
-        //get the user name by the token
-        var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (username == null) return BadRequest("No username found");
-
-        var user = await userRepository.GetUserByUserNameAsync(username);
+        var user = await userRepository.GetUserByUserNameAsync(User.GetUsername());
         if (user == null) return BadRequest("Could nto find user");
         //updates the user with the updates values 
         mapper.Map(memberUpdateDto, user);
@@ -70,6 +65,34 @@ public class UsersController(IUserRepository userRepository, IMapper mapper) : B
         if (await userRepository.SaveAllAsync()) return NoContent();
 
         return BadRequest("Failed to update the user");
+    }
+
+    [HttpPost("add-photo")]
+    //receives a file
+    public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
+    {
+        //get the user info in db by username
+        var user = await userRepository.GetUserByUserNameAsync(User.GetUsername());
+        if (user == null) return BadRequest("Cannot update user");
+
+        //upload
+        var result = await photoService.AddPhotoAsync(file);
+        //if upload fails
+        if(result.Error != null) return BadRequest(result.Error.Message);
+
+        var photo = new Photo{
+            Url = result.SecureUrl.AbsoluteUri,
+            PublicId=result.PublicId,
+        };
+
+        //add the photo object to the photos list in appuser entity
+        user.Photos.Add(photo);
+
+        //return photodto if successfully saved 
+        if (await userRepository.SaveAllAsync()) return mapper.Map<PhotoDto>(photo);
+
+        return BadRequest("Problem adding photo ");
+
     }
 
 

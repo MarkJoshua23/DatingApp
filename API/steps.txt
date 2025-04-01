@@ -66,3 +66,5 @@
 >install cloudinarydotnet nuget
 >make interface iphotoservice
 >make the photoservice that implements the interface
+>inject it in userscontroller
+>add uploadphoto endpoint
