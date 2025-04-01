@@ -59,3 +59,9 @@
 >remove automapper in controller
 >make dto for updating user info
 >add httpput endpoint for update
+===CLOUDINARY===
+>put api keys in appsettings
+>make cloudinary settings class in helper
+>add the configure in services in extensions
+>install cloudinarydotnet nuget
+>make interface iphotoservice
