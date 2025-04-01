@@ -155,3 +155,6 @@
 >add interceptor to app config
 >add it to the app.component.html with <h3>Loading...</h3> inside
 > add NgxSpinnerComponent to app.component.ts
+
+===CACHING====
+>store data to the service signal so its singleton

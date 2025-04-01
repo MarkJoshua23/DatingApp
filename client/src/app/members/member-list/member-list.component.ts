@@ -12,20 +12,17 @@ import { MemberCardComponent } from "../member-card/member-card.component";
 //oninit is like useeffect
 
 export class MemberListComponent implements OnInit{
-  private memberService = inject(MembersService)
-  members: Member[] = []
+  memberService = inject(MembersService)
   //runs when the component loaded
   ngOnInit(): void {
-    this.loadMembers()
+    //only fetch/load if theres no content inside
+    if(this.memberService.members().length===0) this.loadMembers()
+
+
   }
 
   loadMembers(){
-    this.memberService.getMembers().subscribe({
-      next: members => {
-        console.log(members)
-        this.members = members
-      }
-    })
+    this.memberService.getMembers()
   }
 
 }
