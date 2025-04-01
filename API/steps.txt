@@ -65,3 +65,4 @@
 >add the configure in services in extensions
 >install cloudinarydotnet nuget
 >make interface iphotoservice
+>make the photoservice that implements the interface

@@ -28,8 +28,11 @@ public static class ApplicationServiceExtensions
         //<interface,service>
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IPhotoService, PhotoService>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        //to access api keys from appsettings
         services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
+
         return services;
     }
 }
