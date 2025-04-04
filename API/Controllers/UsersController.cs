@@ -80,6 +80,7 @@ public class UsersController(IUserRepository userRepository, IMapper mapper, IPh
         //if upload fails
         if(result.Error != null) return BadRequest(result.Error.Message);
 
+        //make a photo object to return
         var photo = new Photo{
             Url = result.SecureUrl.AbsoluteUri,
             PublicId=result.PublicId,
