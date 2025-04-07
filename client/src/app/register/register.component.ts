@@ -1,5 +1,13 @@
 import { Component, inject, input, OnInit, output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { JsonPipe } from '@angular/common';
@@ -10,8 +18,7 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent implements OnInit{
-
+export class RegisterComponent implements OnInit {
   //private cannot be accessed in the template
   private accountService = inject(AccountService);
   //items that is passed from parent
@@ -19,30 +26,43 @@ export class RegisterComponent implements OnInit{
   //send values from child to parent
   cancelRegister = output<boolean>();
   //to store values from form
-  private toastr =inject(ToastrService)
+  private toastr = inject(ToastrService);
   model: any = {};
 
   //needed for reactive form
   registerForm: FormGroup = new FormGroup({});
 
-
   ngOnInit(): void {
-    this.initializeForm()
+    this.initializeForm();
   }
 
-  initializeForm(){
+  initializeForm() {
     //values can be seen in this.registerForm.value
     this.registerForm = new FormGroup({
       //inputs
-      username: new FormControl(),
-      password: new FormControl(),
-      confirmPassword: new FormControl()
-    })
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(8),
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        this.matchValues('password'),
+      ]),
+    });
+  }
+  matchValues(matchTo: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      return control.value === control.parent?.get(matchTo)?.value
+        ? null
+        : { isMatching: true };
+    };
   }
 
   register() {
     //to get values inside
-    console.log(this.registerForm.value)
+    console.log(this.registerForm.value);
     // this.accountService.register(this.model).subscribe({
     //   next: (response) => {
     //     console.log(response);
