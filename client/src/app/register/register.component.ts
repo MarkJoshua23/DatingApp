@@ -1,6 +1,7 @@
 import { Component, inject, input, OnInit, output } from '@angular/core';
 import {
   AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
@@ -22,6 +23,7 @@ import { TextInputComponent } from "../_forms/text-input/text-input.component";
 export class RegisterComponent implements OnInit {
   //private cannot be accessed in the template
   private accountService = inject(AccountService);
+  private fb = inject(FormBuilder)
   //items that is passed from parent
   //required so it warns if theres no given parameter by the parent
   //send values from child to parent
@@ -39,18 +41,23 @@ export class RegisterComponent implements OnInit {
 
   initializeForm() {
     //values can be seen in this.registerForm.value
-    this.registerForm = new FormGroup({
+    this.registerForm = this.fb.group({
       //inputs
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [
+      gender: ['male'],
+      username: ['', Validators.required],
+      knownAs:['', Validators.required],
+      dateOfBirth:['', Validators.required],
+      city:['', Validators.required],
+      country:['', Validators.required],
+      password: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(8),
-      ]),
-      confirmPassword: new FormControl('', [
+      ]],
+      confirmPassword: ['', [
         Validators.required,
         this.matchValues('password'),
-      ]),
+      ]],
     });
     this.registerForm.controls['password'].valueChanges.subscribe({
       next:()=> this.registerForm.controls['confirmPassword'].updateValueAndValidity()
