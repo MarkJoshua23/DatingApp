@@ -1,13 +1,15 @@
+import { NgIf } from '@angular/common';
 import { Component, input, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-text-input',
-  imports: [],
+  imports: [NgIf,ReactiveFormsModule],
   templateUrl: './text-input.component.html',
   styleUrl: './text-input.component.css'
 })
 export class TextInputComponent implements ControlValueAccessor{
+  //signal, so u use it by label()
   label = input<string>('')
   type= input<string>('text')
 
