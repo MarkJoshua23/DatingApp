@@ -5,6 +5,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ namespace API.Controllers;
 
 //inject dbcontext
 //inject itokenservice interface that uses the token service method 
-public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
+public class AccountController(DataContext context, ITokenService tokenService, IMapper mapper) : BaseApiController
 {
     //the route will now be api/account/register
     [HttpPost("register")]
@@ -23,29 +24,31 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         //check if username already exist
         if (await UserExists(registerDto.Username)) return BadRequest("Username is already taken");
 
-        return Ok();
-        // //using handles the disposing after using
-        // using var hmac = new HMACSHA512();
 
-        // //put values in the AppUser Entity
-        // var user = new AppUser
-        // {
-        //     //save username in lowercase
-        //     UserName = registerDto.Username.ToLower(),
-        //     //turn the string password to bytes then hash it
-        //     PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-        //     //store the salt generated when hashing
-        //     PasswordSalt = hmac.Key
-        // };
-        // //dbcontext => Dbset Users => Sqlite Add => insert users
-        // context.Users.Add(user);
-        // await context.SaveChangesAsync();
-        // return new UserDto
-        // {
-        //     Username = user.UserName,
-        //     //use the createtoken method inside the interface
-        //     Token = tokenService.CreateToken(user)
-        // };
+        //using handles the disposing after using
+        using var hmac = new HMACSHA512();
+
+        //put values in the AppUser Entity
+        var user = mapper.Map<AppUser>(registerDto);
+        //save username in lowercase
+        user.UserName = registerDto.Username.ToLower();
+        //turn the string password to bytes then hash it
+        user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+        //store the salt generated when hashing
+        user.PasswordSalt = hmac.Key;
+
+
+
+        //dbcontext => Dbset Users => Sqlite Add => insert users
+        context.Users.Add(user);
+        await context.SaveChangesAsync();
+        return new UserDto
+        {
+            Username = user.UserName,
+            //use the createtoken method inside the interface
+            Token = tokenService.CreateToken(user),
+            KnownAs = user.KnownAs,
+        };
     }
 
     [HttpPost("login")]
@@ -74,7 +77,8 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         {
             Username = user.UserName,
             //use the createtoken method inside the interface
-            Token = tokenService.CreateToken(user)
+            Token = tokenService.CreateToken(user),
+            KnownAs = user.KnownAs
         };
     }
 

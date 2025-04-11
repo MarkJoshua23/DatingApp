@@ -30,5 +30,9 @@ public class AutoMapperProfiles: Profile
         ));
         CreateMap<Photo, PhotoDto>();
         CreateMap<MemberUpdateDto,AppUser>();
+        CreateMap<RegisterDto,AppUser>();
+        //for automapper to know what to do for string to dateonly conversions
+        //take the string and parse it to dateonly
+        CreateMap<string,DateOnly>().ConvertUsing(s=> DateOnly.Parse(s));
     }
 }
